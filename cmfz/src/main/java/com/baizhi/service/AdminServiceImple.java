@@ -31,4 +31,9 @@ public class AdminServiceImple implements AdminService {
     public void add(Admin admin) {
         adminDao.insert(admin);
     }
+
+    @Override
+    public void amend(String password) {
+        adminDao.Updata(password);
+    }
 }

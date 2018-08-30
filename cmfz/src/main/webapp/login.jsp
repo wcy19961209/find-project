@@ -13,25 +13,52 @@
 	<script type="text/javascript" src="script/jquery.js"></script>
 	<script type="text/javascript" src="script/common.js"></script>
 	<script type="text/javascript">
-	
+
 		$(function(){
 			//点击更换验证码：
 			$("#captchaImage").click(function(){//点击更换验证码
-				alert("自己做");
+                $("#captchaImage").attr("src","${pageContext.request.contextPath}/cond/createCaptcha?flag="+Math.random());
+					/*$.ajax({
+						type:"get",
+						url:"",
+						dataType: 'json',
+						success:function (data) {
+						  var  da=$.parseJSON(data);
+							$(this).src="da"
+                        }
+					});*/
 			});
-			
-			//  form 表单提交
-			$("#loginForm").bind("submit",function(){
 
-				return false;
-			});
+			/*//  form 表单提交
+			$("#loginForm").form('submit', {
+			   url:"/text/findAll",
+				onSubmit:function() {
+			       /!*表单提交之前的回调函数*!/
+                    var username = $("#user").val();
+                    var password = $("#pass").val();
+                    if (username.length == 0 || password.length == 0) {
+                        $.messager.alert('警告', '请输入用户帐号密码');
+                        return false;
+                    	}
+                    return true;
+              	  },
+              	  success:function(data){
+                      var admin=$.parseJSON(data);
+                      if(admin==null){
+						  location.href="/login.jsp"
+					  }else{
+                          location.href="/main/main.jsp"
+					  }
+				  }
+                });*/
 		});
+
 	</script>
 </head>
 <body>
 	
 		<div class="login">
-			<form id="loginForm" action="../back/index.html" method="post" >
+			<form id="loginForm" action="${pageContext.request.contextPath}/text/findAll" method="post" >
 				
 				<table>
 					<tbody>
@@ -43,7 +70,7 @@
 								用户名:
 							</th>
 							<td>
-								<input type="text"  name="username" class="text" value="xxx" maxlength="20"/>
+								<input type="text" id="user" name="username" class="text" value="" maxlength="20"/>
 							</td>
 					  </tr>
 					  <tr>
@@ -51,7 +78,7 @@
 								密&nbsp;&nbsp;&nbsp;码:
 							</th>
 							<td>
-								<input type="password" name="password" class="text" value="xxx" maxlength="20" autocomplete="off"/>
+								<input type="password" id="pass" name="password" class="text" value="" maxlength="20" autocomplete="off"/>
 							</td>
 					  </tr>
 					
@@ -59,7 +86,7 @@
 							<td>&nbsp;</td>
 							<th>验证码:</th>
 							<td>
-								<input type="text" id="enCode" name="enCode" class="text captcha" maxlength="4" autocomplete="off"/>
+								<input type="text" id="enCode" name="enCode" class="text captcha" maxlength="5" autocomplete="off"/>
 								<img id="captchaImage" class="captchaImage" src="${pageContext.request.contextPath}/cond/createCaptcha" title="点击更换验证码"/>
 							</td>
 						</tr>					

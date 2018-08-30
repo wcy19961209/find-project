@@ -8,4 +8,5 @@ import com.baizhi.entity.Admin;
 public interface AdminService {
     Admin find(String username,String password);
     void add(Admin admin);
+    void amend(String password);
 }

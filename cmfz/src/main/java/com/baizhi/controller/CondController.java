@@ -4,6 +4,7 @@ import com.baizhi.util.SecurityCode;
 import com.baizhi.util.SecurityImage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +20,8 @@ import java.io.OutputStream;
 public class CondController {
 
     @RequestMapping("/createCaptcha")
-    public void createCaptcha(HttpSession session, HttpServletResponse response) throws Exception {
+    @ResponseBody
+    public String  createCaptcha(HttpSession session, HttpServletResponse response) throws Exception {
         String code = SecurityCode.getSecurityCode();
         session.setAttribute("code", code);
         //生成验证码图片
@@ -30,6 +32,8 @@ public class CondController {
 		参数一 ： 验证码图片对象
 		 参数二： 响应内容的格式
 		 参数三：输出字节流*/
-        ImageIO.write(image, "png", out);
+       ImageIO.write(image, "png", out);
+
+            return "image";
     }
 }
