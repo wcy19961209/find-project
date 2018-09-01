@@ -8,7 +8,6 @@
         var d = date.getDate();
         return y+'/'+m+'/'+d;
     }
-
     $(function () {
         var toolbar = [{
             iconCls: 'icon-edit',
@@ -57,7 +56,25 @@
             text: "添加章节",
             iconCls: 'icon-help',
             handler: function () {
-
+                /*获取父项选中的节点对象*/
+                var row =$("#tt1").treegrid('getSelected');
+                if(row!=null&&row.corverlmg!=null){
+                    $("#ch").dialog('open');
+                    $("#chapter").form({
+                        /*关系型获取父项的id 拼接请求*/
+                        url:""+row.id,
+                        onSubmit:function () {
+                            var isValid = $(this).form('validate');
+                            if (isValid){
+                                return true;
+                            }else{
+                                return false;
+                            }
+                    }
+                    })
+                }else{
+                    alert("请选中索要添加的专辑项");
+                }
             }
         }, '-', {
             text: "下载音频",
@@ -66,9 +83,6 @@
 
             }
         }]
-
-
-
 
         $('#tt1').treegrid({
             url: '${pageContext.request.contextPath}/Album/find',
@@ -87,16 +101,15 @@
             toolbar:toolbar
             });
         });
+    /*专辑*/
     $("#save").click(function(){
         $("#ZZ").form("submit");
     });
+    /*章节*/
+    $("#bn").click(function () {
+        $("#chapter").form("subumit");
+    })
 
-/*/!*提交添加专辑*!/
-    function submit() {
-        $("#ZZ").form("submit", {
-            url: "/Album/dd",
-        });
-    }*/
 </script>
 
 <table id="tt1"></table>
@@ -191,3 +204,27 @@
     <input type = "button" id = "save" value = "提交" />
     </form>
 </div>
+
+<%--添加章节--%>
+<div id="ch" align="center" class="easyui-dialog" title="添加章节" style="width:400px;height:200px;"
+     data-options="iconCls:'icon-save',resizable:true,modal:true,closed:true,buttons:[{
+				text:'关闭',
+				handler:function(){
+                  $('#ch').dialog('close');
+				}
+			}]">
+
+    <form id="chapter" method="post" enctype="multipart/form-data">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>章节文件：<input class="easyui-filebox" name="audioPath" style="width:300px"></div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <input type="button" id="bn" value="提交">
+    </form>
+
+
+</div>
+
+
