@@ -16,10 +16,10 @@
         $(function () {
             $.ajax({
                 url:"${pageContext.request.contextPath}/Menu/find",
+
                 success:function(data){
                     $.each(data, function (index, first) {
                         var c = "";
-
                         $.each(first.menu, function (index1, second) {
                             c += "<p style='text-align: center'><a href='#' data-options=\"iconCls:'icon-search'\" class='easyui-linkbutton' onclick=\"addTabs('" + second.iconCls + "','" + first.title + "','" + second.href + "')\">" + second.content + "</a></p>";
                         })
@@ -29,6 +29,7 @@
                             content: c,
                             iconCls: first.iconCls,
                             selected: false
+
                         });
                     })
                 }
@@ -38,7 +39,7 @@
                 var flag=$("#tt").tabs("exists",title)
             if (flag){
                 $("#tt").tabs("select",title)
-                console.log(href)
+                console.log(href);
             }else {
                 $('#tt').tabs('add', {
                     title: title,
@@ -62,13 +63,13 @@
 </div>
 
 <div data-options="region:'west',title:'导航菜单',split:true" style="width:220px;">
-    <div id="aa" class="easyui-accordion" data-options="fit:true">
+    <div id="aa" class="easyui-accordion" data-options="fit:true,">
 
     </div>
 </div>
 <div data-options="region:'center'">
     <div id="tt" class="easyui-tabs" data-options="fit:true,narrow:true,pill:true">
-        <div title="主页" data-options="iconCls:'icon-neighbourhood',"  style="background-image:url(image/shouye.jpg);background-repeat: no-repeat;background-size:100% 100%;"></div>
+        <div title="主页" data-options="iconCls:'icon-neighbourhood',"  style="background-image:url(/main/image/shouye.jpg);background-repeat: no-repeat;background-size:100% 100%;"></div>
     </div>
 </div>
 </body>

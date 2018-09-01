@@ -8,7 +8,8 @@
     </select>
     <!--增加-->
     <insert id="insert" parameterType="Banner">
-        insert into banner VALUES (#{id},#{title},#{imgPath},#{description},#{status},#{createDate})
+        insert into banner(title,description,status,createDate,imgPath) VALUES
+        (#{title},#{description},#{status},#{createDate},#{imgPath})
     </insert>
     <!--删除-->
     <delete id="delete" parameterType="java.lang.Integer">

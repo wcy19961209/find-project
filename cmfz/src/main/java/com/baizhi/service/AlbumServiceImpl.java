@@ -15,6 +15,7 @@ import java.util.List;
 @Service
 @Transactional
 public class AlbumServiceImpl implements AlbumService {
+
     @Autowired
     private AlbumDao albumDao;
 

@@ -36,10 +36,11 @@ public class BannerController {
 
     @RequestMapping("/Add")
     public void add(Banner banner, MultipartFile img, HttpServletRequest request) throws ParseException {
-
+        /*找到文件的路径*/
         String realPath = request.getServletContext().getRealPath("/");
-        /*新建文件夹*/
+        /*文件中的文件*/
         String uplodFilePath=realPath+"upload";
+        /*文件对象*/
         File file =new File(uplodFilePath);
         if(!file.exists()){
             file.mkdir();
@@ -49,7 +50,7 @@ public class BannerController {
         String uuid = UUID.randomUUID().toString();
         /*jpg格式*/
         String extension = FilenameUtils.getExtension(originalFilename);
-        /*新创建的文件格式名字*/
+        /*拼接新创建的文件格式名字*/
         String newName=uuid+"."+extension;
 
         /*图片上传到指定的文件夹*/
@@ -58,8 +59,7 @@ public class BannerController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        banner.setCreateDate(new Date());
-        banner.setImgPath(uuid);
+        banner.setImgPath(newName);
         bannerService.add(banner);
     }
 

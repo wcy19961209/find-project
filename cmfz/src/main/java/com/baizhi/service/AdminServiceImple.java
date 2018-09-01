@@ -34,6 +34,6 @@ public class AdminServiceImple implements AdminService {
 
     @Override
     public void amend(String password) {
-        adminDao.Updata(password);
+        adminDao.update(password);
     }
 }

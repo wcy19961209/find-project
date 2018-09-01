@@ -21,8 +21,7 @@ spring:
       force: true
       #时间处理方式
   jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8
+    date-format: yyyy/MM/dd
 mybatis:
   type-aliases-package: com.baizhi.entity
   mapper-locations: classpath:/com/baizhi/mapper/*.xml

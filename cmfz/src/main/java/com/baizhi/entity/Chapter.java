@@ -7,8 +7,8 @@ import java.util.Date;
  * Created by 畅均江 on 2018/8/30.
  */
 public class Chapter implements Serializable {
-    private Integer id;
-    private String title;
+    private String id;
+    private String name;
     private Date duration;
     private String size;
     private String audioPath;
@@ -17,8 +17,8 @@ public class Chapter implements Serializable {
     @Override
     public String toString() {
         return "Chapter{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", duration=" + duration +
                 ", size='" + size + '\'' +
                 ", audioPath='" + audioPath + '\'' +
@@ -26,23 +26,20 @@ public class Chapter implements Serializable {
                 '}';
     }
 
-    public Chapter() {
-    }
-
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getDuration() {
@@ -77,12 +74,15 @@ public class Chapter implements Serializable {
         this.album_id = album_id;
     }
 
-    public Chapter(Integer id, String title, Date duration, String size, String audioPath, Integer album_id) {
+    public Chapter(String id, String name, Date duration, String size, String audioPath, Integer album_id) {
         this.id = id;
-        this.title = title;
+        this.name = name;
         this.duration = duration;
         this.size = size;
         this.audioPath = audioPath;
         this.album_id = album_id;
+    }
+
+    public Chapter() {
     }
 }

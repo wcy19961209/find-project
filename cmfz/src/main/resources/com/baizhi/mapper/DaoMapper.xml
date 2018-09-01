@@ -1,17 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.baizhi.dao.AdminDao">
-    <select id="select" parameterType="java.lang.String" resultType="Admin">
-        select * from Admin where username=#{username} AND password=#{password}
-    </select>
-    <insert id="insert" parameterType="Admin">
-        insert INTO Admin VALUES (#{username},#{password})
-    </insert>
-    <update id="update" parameterType="java.lang.String">
-        update Admin set password=#{password}
-    </update>
-</mapper>
+<mapper namespace="com.baizhi.dao.AlbumDao">
+   <resultMap  type="Album" id="S">
+        <id column="nid" property="id"/>
+        <result column="nname" property="name"/>
+		 <result column="count" property="count"/>
+		  <result column="corverlmg" property="corverlmg"/>
+		   <result column="score" property="score"/>
+        <result column="author" property="author"/>
+        <collection property="children" ofType="Chapter">
+            <id property="id" column="mid"/>
+            <result column="mname" property="name"/>
+            <result column="audioPath" property="audioPath"/>
+            <result column="size" property="size"/>
+            <result column="duration" property="duration"/>
+            <result column="album_id" property="album_id"/>
+        </collection>
+    </resultMap>
 
+    <select id="findAll" resultMap="S">
+    SELECT n.id nid,n.name nname,n.count,n.corverlmg,n.score,n.author,
+    m.id mid,m.name mname,m.audioPath,m.size,m.duration,m.album_id
+    FROM album n LEFT JOIN
+    chapter m ON n.id=m.album_id
+    </select>
+
+    <insert id="insert" parameterType="Album">
+        insert into album (name,count,corverlmg,score,author,broadCast,brife,publicDate,createDate,status) VALUES
+        (#{name},#{count},#{corverlmg},#{score},#{author},#{broadCast},#{brife},#{publicDate},#{createDate},#{status})
+    </insert>
+
+
+
+</mapper>
 
 
 

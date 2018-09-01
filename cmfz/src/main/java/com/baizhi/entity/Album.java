@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Album implements Serializable{
     private Integer id;
-    private String title;
+    private String name;
     private  Integer count;
     private String corverlmg;
     private double score;
@@ -18,15 +18,16 @@ public class Album implements Serializable{
     private  String brife;
     private Date publicDate;
     private Date createDate;
-    private List<Chapter> chapter;
+    private String status;
+    private List<Chapter> children;
 
 
     public Album() {
     }
 
-    public Album(Integer id, String title, Integer count, String corverlmg, double score, String author, String broadCast, String brife, Date publicDate, Date createDate, List<Chapter> chapter) {
+    public Album(Integer id, String name, Integer count, String corverlmg, double score, String author, String broadCast, String brife, Date publicDate, Date createDate, String status, List<Chapter> children) {
         this.id = id;
-        this.title = title;
+        this.name = name;
         this.count = count;
         this.corverlmg = corverlmg;
         this.score = score;
@@ -35,7 +36,8 @@ public class Album implements Serializable{
         this.brife = brife;
         this.publicDate = publicDate;
         this.createDate = createDate;
-        this.chapter = chapter;
+        this.status = status;
+        this.children = children;
     }
 
     public Integer getId() {
@@ -46,12 +48,12 @@ public class Album implements Serializable{
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getCount() {
@@ -118,19 +120,27 @@ public class Album implements Serializable{
         this.createDate = createDate;
     }
 
-    public List<Chapter> getChapter() {
-        return chapter;
+    public String getStatus() {
+        return status;
     }
 
-    public void setChapter(List<Chapter> chapter) {
-        this.chapter = chapter;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public List<Chapter> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Chapter> children) {
+        this.children = children;
     }
 
     @Override
     public String toString() {
         return "Album{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
+                ", name='" + name + '\'' +
                 ", count=" + count +
                 ", corverlmg='" + corverlmg + '\'' +
                 ", score=" + score +
@@ -139,7 +149,49 @@ public class Album implements Serializable{
                 ", brife='" + brife + '\'' +
                 ", publicDate=" + publicDate +
                 ", createDate=" + createDate +
-                ", chapter=" + chapter +
+                ", status='" + status + '\'' +
+                ", children=" + children +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Album album = (Album) o;
+
+        if (Double.compare(album.score, score) != 0) return false;
+        if (id != null ? !id.equals(album.id) : album.id != null) return false;
+        if (name != null ? !name.equals(album.name) : album.name != null) return false;
+        if (count != null ? !count.equals(album.count) : album.count != null) return false;
+        if (corverlmg != null ? !corverlmg.equals(album.corverlmg) : album.corverlmg != null) return false;
+        if (author != null ? !author.equals(album.author) : album.author != null) return false;
+        if (broadCast != null ? !broadCast.equals(album.broadCast) : album.broadCast != null) return false;
+        if (brife != null ? !brife.equals(album.brife) : album.brife != null) return false;
+        if (publicDate != null ? !publicDate.equals(album.publicDate) : album.publicDate != null) return false;
+        if (createDate != null ? !createDate.equals(album.createDate) : album.createDate != null) return false;
+        if (status != null ? !status.equals(album.status) : album.status != null) return false;
+        return children != null ? children.equals(album.children) : album.children == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (count != null ? count.hashCode() : 0);
+        result = 31 * result + (corverlmg != null ? corverlmg.hashCode() : 0);
+        temp = Double.doubleToLongBits(score);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (author != null ? author.hashCode() : 0);
+        result = 31 * result + (broadCast != null ? broadCast.hashCode() : 0);
+        result = 31 * result + (brife != null ? brife.hashCode() : 0);
+        result = 31 * result + (publicDate != null ? publicDate.hashCode() : 0);
+        result = 31 * result + (createDate != null ? createDate.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (children != null ? children.hashCode() : 0);
+        return result;
     }
 }

@@ -1,6 +1,4 @@
 package com.baizhi.service;
-
-import com.baizhi.entity.Admin;
 import com.baizhi.entity.Album;
 
 import java.util.List;
