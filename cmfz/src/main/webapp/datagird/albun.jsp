@@ -100,6 +100,10 @@
         }]
 
         $('#tt1').treegrid({
+            onDblClickRow: function (row) {
+                $("#audio_dd").dialog("open")
+                $("#audio").prop("src", "${pageContext.request.contextPath}/music/" + row.audioPath);
+            },
             url: '${pageContext.request.contextPath}/Album/find',
             method: "post",
             idField: 'id',
@@ -221,7 +225,7 @@
 </div>
 
 <%--添加章节--%>
-<div id="ch" align="center" class="easyui-dialog" title="添加章节" style="width:400px;height:200px;"
+<div id="ch" align="center" class="easyui-dialog" title="添加章节" style="width:400px;height:250px;"
      data-options="iconCls:'icon-save',resizable:true,modal:true,closed:true,buttons:[{
 				text:'关闭',
 				handler:function(){
@@ -239,9 +243,16 @@
         <div>&nbsp;</div>
         <div>章节文件：<input class="easyui-filebox" name="audioPath" style="width:300px" data-options="required:true"></div>
         <div>&nbsp;</div>
-        <div>&nbsp;</div>
         <input type="button" id="bn" value="提交">
     </form>
+
+
+    <div id="audio_dd" class="easyui-dialog" title="播放音乐" style="width:400px;height:100px;"
+         data-options="iconCls:'icon-save',resizable:true,modal:true,closed:true">
+        <audio src="" id="audio" controls="controls" autoplay="autoplay">
+
+        </audio>
+    </div>
 
 
 </div>
