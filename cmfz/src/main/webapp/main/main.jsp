@@ -16,12 +16,11 @@
         $(function () {
             $.ajax({
                 url:"${pageContext.request.contextPath}/Menu/find",
-
                 success:function(data){
                     $.each(data, function (index, first) {
                         var c = "";
                         $.each(first.menu, function (index1, second) {
-                            c += "<p style='text-align: center'><a href='#' data-options=\"iconCls:'icon-search'\" class='easyui-linkbutton' onclick=\"addTabs('" + second.iconCls + "','" + first.title + "','" + second.href + "')\">" + second.content + "</a></p>";
+                            c += "<p style='text-align: center'><a href='#' data-options=\"iconCls:'icon-search'\" class='easyui-linkbutton' onclick=\"addTabs('"+first.iconCls+ second.iconCls + "','" + first.title + "','" + second.href + "')\">" + second.content + "</a></p>";
                         })
 
                         $('#aa').accordion('add', {

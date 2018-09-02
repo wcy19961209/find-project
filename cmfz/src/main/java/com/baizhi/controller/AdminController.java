@@ -19,7 +19,6 @@ public class AdminController {
     private AdminService adminService;
 
     @RequestMapping("/findAll")
-
     public String findAll(String username, String password, HttpSession session,String enCode){
 
        String code = (String) session.getAttribute("code");

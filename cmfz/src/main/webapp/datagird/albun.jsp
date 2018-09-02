@@ -62,7 +62,7 @@
                     $("#ch").dialog('open');
                     $("#chapter").form({
                         /*关系型获取父项的id 拼接请求*/
-                        url:""+row.id,
+                        url:"${pageContext.request.contextPath}/Album/chateradd?alubum_id="+row.id,
                         onSubmit:function () {
                             var isValid = $(this).form('validate');
                             if (isValid){
@@ -70,7 +70,11 @@
                             }else{
                                 return false;
                             }
-                    }
+                    },
+                        success:function () {
+                            $('#ch').dialog('close');
+                            $('#tt1').treegrid('reload');
+                        }
                     })
                 }else{
                     alert("请选中索要添加的专辑项");
@@ -80,6 +84,17 @@
             text: "下载音频",
             iconCls: 'icon-help',
             handler: function () {
+               var row= $("#tt1").treegrid('getSelected');
+               if(row!=null){
+                    if(row.duration!=null){
+                        location.href="${pageContext.request.contextPath}/Album/chaptercontroller?name="+row.name+"&audioPath="+row.audioPath;
+                    }else{
+                        alert("请您正确选择音频文件")
+                    }
+                }else{
+                   alert("请选则您要下载的音频文件");
+                }
+
 
             }
         }]
@@ -107,7 +122,7 @@
     });
     /*章节*/
     $("#bn").click(function () {
-        $("#chapter").form("subumit");
+        $("#chapter").form("submit");
     })
 
 </script>
@@ -167,38 +182,38 @@
     <div>&nbsp</div>
         <div>
             <label for="count">数量:</label>
-            <input class="easyui-validatebox" id="shuling" type="text" name="count" data-options="validType:''" />
+            <input class="easyui-validatebox" id="shuling" type="text" name="count" data-options="required:true" />
         </div>
     <div>&nbsp</div>
-       <div> 封面：<input class="easyui-filebox" id="img" name="img" style="width:300px"></div>
+       <div> 封面：<input class="easyui-filebox" id="img" name="img" style="width:300px" data-options="required:true"></div>
     <div>&nbsp</div>
         <div>
             <label for="score">评分:</label>
-            <input class="easyui-validatebox" id="s" type="text" name="score" data-options="validType:''" />
+            <input class="easyui-validatebox" id="s" type="text" name="score" data-options="required:true" />
         </div>
     <div>&nbsp</div>
         <div>
             <label for="author">作者:</label>
-            <input class="easyui-validatebox" id="author" type="text" name="author" data-options="validType:''" />
+            <input class="easyui-validatebox" id="author" type="text" name="author" data-options="required:true" />
         </div>
     <div>&nbsp</div>
         <div>
             <label for="broadCast">播音:</label>
-            <input class="easyui-validatebox" id="broadCast" type="text" name="broadCast" data-options="validType:''" />
+            <input class="easyui-validatebox" id="broadCast" type="text" name="broadCast" data-options="required:true" />
         </div>
     <div>&nbsp</div>
         <div>
             <label for="brife">内容简介:</label>
-            <input class="easyui-validatebox" id="brife" type="text" name="brife" data-options="validType:''" />
+            <input class="easyui-validatebox" id="brife" type="text" name="brife" data-options="required:true" />
         </div>
     <div>&nbsp</div>
-    <div>  创建日期：<input  id="rq"  type= "text" name="publicDate" class= "easyui-datebox" required ="required"/> </div>
+    <div>  创建日期：<input  id="rq"  type= "text" name="publicDate" class= "easyui-datebox" required ="required" data-options="required:true"/> </div>
     <div>&nbsp</div>
-    <div>发布日期：<input  id="fbrq c"  type= "text" name="createDate" class= "easyui-datebox" required ="required"/>  </div>
+    <div>发布日期：<input  id="fbrq c"  type= "text" name="createDate" class= "easyui-datebox" required ="required" data-options="required:true"/>  </div>
     <div>&nbsp</div>
         <div>
             <label for="status">状态:</label>
-            <input class="easyui-validatebox" id="status" type="text" name="status" data-options="validType:''" />
+            <input class="easyui-validatebox" id="status" type="text" name="status" data-options="required:true" />
         </div>
     <div>&nbsp</div>
     <input type = "button" id = "save" value = "提交" />
@@ -217,8 +232,12 @@
     <form id="chapter" method="post" enctype="multipart/form-data">
         <div>&nbsp;</div>
         <div>&nbsp;</div>
+        <div>
+            <label for="name">章节名称:</label>
+            <input class="easyui-validatebox" id="names" type="text" name="name" data-options="required:true" />
+        </div>
         <div>&nbsp;</div>
-        <div>章节文件：<input class="easyui-filebox" name="audioPath" style="width:300px"></div>
+        <div>章节文件：<input class="easyui-filebox" name="audioPath" style="width:300px" data-options="required:true"></div>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
         <input type="button" id="bn" value="提交">

@@ -30,7 +30,9 @@
         (#{name},#{count},#{corverlmg},#{score},#{author},#{broadCast},#{brife},#{publicDate},#{createDate},#{status})
     </insert>
 
-
+    <insert id="chapterinsert" parameterType="Chapter">
+        insert into chapter(id,name,duration,size,audioPath,album_id)VALUES (#{id},#{name},#{duration},#{size},#{audioPath},#{album_id});
+    </insert>
 
 </mapper>
 

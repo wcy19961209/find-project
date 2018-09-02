@@ -19,6 +19,11 @@ spring:
     encoding:
       charset: UTF-8
       force: true
+
+      #文件传输大小约束处理方式
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
       #时间处理方式
   jackson:
     date-format: yyyy/MM/dd

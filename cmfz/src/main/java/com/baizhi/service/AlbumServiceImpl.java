@@ -2,6 +2,7 @@ package com.baizhi.service;
 
 import com.baizhi.dao.AlbumDao;
 import com.baizhi.entity.Album;
+import com.baizhi.entity.Chapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -33,5 +34,10 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     public void add(Album album) {
         albumDao.insert(album);
+    }
+
+    @Override
+    public void chapteradd(Chapter chapter) {
+        albumDao.chapterinsert(chapter);
     }
 }

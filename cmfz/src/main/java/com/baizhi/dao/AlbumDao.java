@@ -3,7 +3,7 @@ package com.baizhi.dao;
 
 import com.baizhi.entity.Album;
 import org.springframework.stereotype.Component;
-
+import com.baizhi.entity.Chapter;
 import java.util.List;
 
 /**
@@ -17,5 +17,5 @@ public interface AlbumDao {
     /*添加专辑*/
     void insert(Album album);
     /*添加章节*/
-
+    void chapterinsert(Chapter chapter);
 }
