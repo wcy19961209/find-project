@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.UserDao">
+
+    <select id="select" parameterType="java.lang.Integer" resultType="User">
+        select * from user where id=#{id}
+    </select>
+
+    <update id="Update" parameterType="User">
+      update user set (#{id},#{photoimg},#{name}.#{dharmaName},#{sex},#{province},#{city},#{sign},#{phoneNum},#{password},
+      #{salt},#{status},#{regisDate},#{guru_id})
+    </update>
+
+    <select id="squertyAll" resultType="User">
+        SELECT * FROM user
+    </select>
+
+</mapper>
+
+
+
+
+
+

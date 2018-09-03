@@ -156,19 +156,19 @@
         <div>&nbsp</div>
         <div>
             <label for="description">图片描述:</label>
-            <input class="easyui-validatebox" id="description" type="text" name="description" data-options="validType:''" />
+            <input class="easyui-validatebox" id="description" type="text" name="description" data-options="validType:'',required:true" />
         </div>
         <div>&nbsp</div>
         <div>
-            状态: <select id="cc" class="easyui-combobox" name="status" style="width:150px;">
-                 <option value="Fabu">已发布</option>
+            状态: <select id="cc" class="easyui-combobox" name="status" style="width:150px;" >
+                 <option value="Fabu" >已发布</option>
                  <option  value="weifabu">未发布</option>
             </select>
         </div>
         <div>&nbsp</div>
         <div>  创建日期：<input  id="rq"  type= "text" name="createDate" class= "easyui-datebox" required ="required"/> </div>
         <div>&nbsp</div>
-       <div>图片：<input class="easyui-filebox" name="img" style="width:150px"></div>
+       <div>图片：<input class="easyui-filebox" name="img" style="width:150px" data-options="required:true"></div>
         <div>&nbsp</div>
         <input type = "button" id = "save" value = "提交" />
     </form>
