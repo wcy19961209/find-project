@@ -1,5 +1,6 @@
 package com.baizhi.service;
 
+import com.baizhi.asprct.LogAnnotation;
 import com.baizhi.dao.AlbumDao;
 import com.baizhi.entity.Album;
 import com.baizhi.entity.Chapter;
@@ -32,11 +33,13 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
+    @LogAnnotation(name="专辑添加")
     public void add(Album album) {
         albumDao.insert(album);
     }
 
     @Override
+    @LogAnnotation(name="章节添加")
     public void chapteradd(Chapter chapter) {
         albumDao.chapterinsert(chapter);
     }

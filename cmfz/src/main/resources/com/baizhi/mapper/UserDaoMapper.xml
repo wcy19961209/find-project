@@ -7,13 +7,20 @@
     </select>
 
     <update id="Update" parameterType="User">
-      update user set (#{id},#{photoimg},#{name}.#{dharmaName},#{sex},#{province},#{city},#{sign},#{phoneNum},#{password},
+      update user set (#{id},#{photoimg},#{name},#{dharmaName},#{sex},#{province},#{city},#{sign},#{phoneNum},#{password},
       #{salt},#{status},#{regisDate},#{guru_id})
     </update>
 
     <select id="squertyAll" resultType="User">
         SELECT * FROM user
     </select>
+    <select id="UpdateUser" parameterType="com.baizhi.dao.UserDao">
+       update USER set status=#{status} where id=#{id}
+    </select>
+
+    <insert id="insert" parameterType="User">
+        insert into user VALUES (#{id},#{photoimg},#{name},#{dharmaName},#{sex},#{province},#{city},#{sign},#{phoneNum},#{password},#{salt},#{status},#{regisDate},#{guru_id})
+    </insert>
 
 </mapper>
 

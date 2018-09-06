@@ -1,5 +1,6 @@
 package com.baizhi.service;
 
+import com.baizhi.asprct.LogAnnotation;
 import com.baizhi.entity.Admin;
 
 /**
@@ -7,6 +8,8 @@ import com.baizhi.entity.Admin;
  */
 public interface AdminService {
     Admin find(String username,String password);
+
     void add(Admin admin);
+
     void amend(String password);
 }

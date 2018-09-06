@@ -1,4 +1,5 @@
 package com.baizhi.service;
+import com.baizhi.asprct.LogAnnotation;
 import com.baizhi.entity.Album;
 import com.baizhi.entity.Chapter;
 
@@ -11,7 +12,9 @@ public interface AlbumService {
     /*全查*/
     List<Album> quertyAll();
     /*添加专辑*/
+
     void add(Album album);
     /*添加章节*/
+
     void chapteradd(Chapter chapter);
 }

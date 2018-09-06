@@ -4,13 +4,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>持名法州主页</title>
-    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="../themes/IconExtension.css">
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
-    <script type="text/javascript" src="../js/jquery.edatagrid.js"></script>
-    <script type="text/javascript" src="../js/datagrid-detailview.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/themes/IconExtension.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.edatagrid.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/datagrid-detailview.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/echarts.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/china.js"></script>
     <script type="text/javascript">
         <!--菜单处理-->
         $(function () {
@@ -20,7 +22,7 @@
                     $.each(data, function (index, first) {
                         var c = "";
                         $.each(first.menu, function (index1, second) {
-                            c += "<p style='text-align: center'><a href='#' data-options=\"iconCls:'icon-search'\" class='easyui-linkbutton' onclick=\"addTabs('"+first.iconCls+ second.iconCls + "','" + first.title + "','" + second.href + "')\">" + second.content + "</a></p>";
+                            c += "<p style='text-align: center'><a href='javascript:void(0)' data-options=\"iconCls:'icon-search'\" class='easyui-linkbutton' onclick=\"addTabs('"+first.iconCls+ second.iconCls + "','" + first.title + "','" + second.href + "')\">" + second.content + "</a></p>";
                         })
 
                         $('#aa').accordion('add', {
@@ -44,6 +46,7 @@
                     title: title,
                     selected: true,
                     closable: true,
+                    iconCls: iconCls,
                     href:"${pageContext.request.contextPath}"+href
                 });
             }

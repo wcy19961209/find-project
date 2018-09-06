@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.UserDao">
+    <select id="findAllUser" resultType="User">
+        select * from user
+    </select>
+
+    <select id="query" resultType="ProvinceSum">
+        select province name,count(*) value from user group by province
+    </select>
+
+    <select id="queryFirst" resultType="java.lang.Integer">
+        select count(*)    from user
+        where datediff(now(),regisDate)&lt;=7
+    </select>
+
+    <select id="querySecond" resultType="java.lang.Integer">
+        select count(*)   from user
+        where datediff(now(),regisDate)>7 and datediff(now(),regisDate)&lt;=14
+    </select>
+
+    <select id="queryThird" resultType="java.lang.Integer">
+        select count(*)   from user
+        where datediff(now(),regisDate)>14 and datediff(now(),regisDate)&lt;=21
+    </select>
+
+    <select id="queryForth" resultType="java.lang.Integer">
+        select count(*)   from user
+        where datediff(now(),regisDate)>21 and datediff(now(),regisDate)&lt;=28
+    </select>
+
+
+</mapper>
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 package com.baizhi.service;
 
+import com.baizhi.asprct.LogAnnotation;
 import com.baizhi.dao.AdminDao;
 import com.baizhi.entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,13 @@ public class AdminServiceImple implements AdminService {
     }
 
     @Override
+    @LogAnnotation(name="管理员添加")
     public void add(Admin admin) {
         adminDao.insert(admin);
     }
 
     @Override
+    @LogAnnotation(name="管理员修改")
     public void amend(String password) {
         adminDao.update(password);
     }

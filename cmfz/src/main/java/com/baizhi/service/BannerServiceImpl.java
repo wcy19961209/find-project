@@ -1,5 +1,6 @@
 package com.baizhi.service;
 
+import com.baizhi.asprct.LogAnnotation;
 import com.baizhi.dao.BannerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,16 +31,19 @@ public class BannerServiceImpl implements BannerService{
     }
 
     @Override
+    @LogAnnotation(name="轮播图添加")
     public void add(com.baizhi.entity.Banner banner) {
             bannerDao.insert(banner);
     }
 
     @Override
+    @LogAnnotation(name="轮播图删除")
     public void remove(Integer id) {
             bannerDao.delete(id);
     }
 
     @Override
+    @LogAnnotation(name="轮播图修改")
     public void remand(String status,Integer id) {
             bannerDao.Update(status,id);
     }
