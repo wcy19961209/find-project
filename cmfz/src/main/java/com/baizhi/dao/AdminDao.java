@@ -11,4 +11,5 @@ public interface AdminDao {
     Admin select(@Param("username") String username, @Param("password") String password);
     void insert(Admin admin);
     void update(String password);
+
 }

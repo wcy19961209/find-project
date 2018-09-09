@@ -34,6 +34,32 @@
         insert into chapter(id,name,duration,size,audioPath,album_id)VALUES (#{id},#{name},#{duration},#{size},#{audioPath},#{album_id});
     </insert>
 
+
+
+
+
+    <resultMap  type="Album" id="f">
+        <id column="nid" property="id"/>
+        <result column="nname" property="name"/>
+        <result column="count" property="count"/>
+        <result column="corverlmg" property="corverlmg"/>
+        <result column="score" property="score"/>
+        <result column="author" property="author"/>
+        <collection property="children" ofType="Chapter">
+            <id property="id" column="mid"/>
+            <result column="mname" property="name"/>
+            <result column="audioPath" property="audioPath"/>
+            <result column="size" property="size"/>
+            <result column="duration" property="duration"/>
+            <result column="album_id" property="album_id"/>
+            </collection>
+        </resultMap>
+    <select id="select" parameterType="java.lang.Integer" resultMap="f">
+         SELECT n.id nid,n.name nname,n.count,n.corverlmg,n.score,n.author,m.id mid,m.name mname,m.audioPath,m.size,m.duration,m.album_id
+        FROM album n LEFT JOIN
+    chapter m ON n.id=m.album_id where n.id=#{id}
+    </select>
+
 </mapper>
 
 

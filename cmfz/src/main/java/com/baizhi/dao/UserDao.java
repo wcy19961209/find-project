@@ -1,5 +1,6 @@
 package com.baizhi.dao;
 
+import com.baizhi.entity.Admin;
 import com.baizhi.entity.ProvinceSum;
 import com.baizhi.entity.User;
 import org.apache.ibatis.annotations.Param;
@@ -29,5 +30,7 @@ public interface UserDao {
     Integer queryForth();
     List<ProvinceSum> query();
     List<User> findAllUser();
+    /*app登录*/
+    User selectregister(@Param("phoneNum") String phoneNum, @Param("password")String password);
 
 }

@@ -18,4 +18,6 @@ public interface AlbumDao {
     void insert(Album album);
     /*添加章节*/
     void chapterinsert(Chapter chapter);
+    /*id专辑查询*/
+    Album select(Integer id);
 }

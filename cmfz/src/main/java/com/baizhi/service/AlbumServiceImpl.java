@@ -43,4 +43,15 @@ public class AlbumServiceImpl implements AlbumService {
     public void chapteradd(Chapter chapter) {
         albumDao.chapterinsert(chapter);
     }
+
+    @Override
+    public Album find(Integer id) {
+        Album album = albumDao.select(id);
+        if(album==null){
+            return null;
+        }else{
+            return album;
+        }
+
+}
 }

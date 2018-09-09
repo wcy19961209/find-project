@@ -243,6 +243,18 @@ public class UserServiceImpl implements UserService {
         }
 
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
+    public User querty(String phoneNum, String password) {
+        User user = userDao.selectregister(phoneNum, password);
+        if(user==null){
+            return null;
+        }else{
+            return user;
+        }
+
+    }
 }
 
 

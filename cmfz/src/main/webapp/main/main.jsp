@@ -22,7 +22,7 @@
                     $.each(data, function (index, first) {
                         var c = "";
                         $.each(first.menu, function (index1, second) {
-                            c += "<p style='text-align: center'><a href='javascript:void(0)' data-options=\"iconCls:'icon-search'\" class='easyui-linkbutton' onclick=\"addTabs('"+first.iconCls+ second.iconCls + "','" + first.title + "','" + second.href + "')\">" + second.content + "</a></p>";
+                            c += "<p style='text-align: center'><a href='javascript:void(0)' data-options=\"iconCls:'icon-search'\" class='easyui-linkbutton' onclick=\"addTabs('"+first.iconCls+ second.iconCls + "','" + second.content+ "','" + second.href + "')\">" + second.content + "</a></p>";
                         })
 
                         $('#aa').accordion('add', {

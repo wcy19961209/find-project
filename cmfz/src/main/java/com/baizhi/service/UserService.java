@@ -23,4 +23,6 @@ public interface UserService {
     void iopExportUserservice();
     /*自定义导出*/
     void customerExportService(String titles, String params,HttpServletResponse response);
+    /*APP 登录*/
+    User querty(String phoneNum,String password);
 }
